@@ -22,3 +22,14 @@ db.sequelize.sync()
     .catch((err) => {
         console.log(err);
     })
+
+// Endpoint untuk menambah data buku baru
+app.post("/buku", async (req, res) => {
+    const data = req.body;
+    try {
+        const buku = await db.Buku.create(data);
+        res.send(buku);
+    } catch (err) {
+        res.send(err);
+    }
+});
