@@ -33,3 +33,13 @@ app.post("/buku", async (req, res) => {
         res.send(err);
     }
 });
+
+// Endpoint untuk mendapatkan semua data buku
+app.get('/buku', async (req, res) => {
+    try {
+        const buku = await db.Buku.findAll();
+        res.send(buku);
+    } catch (err) {
+        res.send(err);
+    }
+});
